@@ -2,6 +2,20 @@ const btnAnterior = document.querySelector('.btnAnterior')
 const btnSiguiente = document.querySelector('.btnSiguiente')
 const apiKey = '3e747184efcfd89223c4bfd040944e68'
 let pagina = 1
+btnAnterior.disabled = true
+
+btnAnterior.addEventListener('click', () => {
+  if (pagina === 1) { return }
+  pagina--
+  if (pagina === 1) { btnAnterior.disabled = true }
+  cargarPeliculas()
+})
+
+btnSiguiente.addEventListener('click', () => {
+  pagina++
+  btnAnterior.disabled = false
+  cargarPeliculas()
+})
 
 const cargarPeliculas = async () => {
   try {
